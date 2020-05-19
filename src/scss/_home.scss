@@ -1,7 +1,44 @@
-.logo {
-    width: 25%;
-}
+.container {
+    width: 100vw;
+    height: 75vw;
+    @include flex-center;
+    flex-direction: column;
+    .republic {
+        width: 30%;
+        // padding: $standardSpacing;
+        align-self: flex-start;
+    }
+    .circ-holder {
+        @include flex-center;
+        .sith-circle {
+            width: 80px;
+            height: 80px;
+            background-color: $sith;
+            border-radius: 300%;
+            margin: $standardSpacing;
+        }
+        .jedi-circle {
+            width: 80px;
+            height: 80px;
+            background-color: $jedi;
+            border-radius: 300%;
+            margin: $standardSpacing;
+        }
+    }
 
-.jedi {
-    width: 25%;
+    .jedi {
+        width: 30%;
+        // padding: $standardSpacing;
+        align-self: flex-end;
+    }
+
+    .nav {
+        @include flex-center;
+        button {
+            margin: $standardSpacing;
+            height: 50px;
+            // width: 75px;
+            border-radius: 50px;
+        }
+    }
 }
