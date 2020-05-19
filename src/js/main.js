@@ -2,9 +2,11 @@ console.log(`Hello World from main.js!
 Change this message, and make sure it changes in the browser 
 to verify that you're working in the right files.`);
 
+var tl = gsap.timeline({ repeat: 2, yoyo: true });
+
 gsap.set('.republic, .jedi', { transformOrigin: '50% 50%' });
 
-gsap.to('.republic, .jedi', { duration: 20, rotation: 360 });
+tl.to('.republic, .jedi', { duration: 2, rotation: 360 });
 
 var myObject = { rotation: 0 };
 gsap.to(myObject, {
@@ -15,8 +17,28 @@ gsap.to(myObject, {
 	},
 });
 
-gsap.from('.sith-circle', { duration: 1, opacity: 0, x: -150, stagger: 0.25 });
-gsap.from('.jedi-circle', { duration: 1, opacity: 0, x: 150, stagger: 0.25 });
+tl.from(
+	'.sith-circle',
+	{
+		duration: 1,
+		opacity: 0,
+		x: -150,
+		stagger: 0.25,
+	},
+	'+=-1'
+);
+tl.from(
+	'.jedi-circle',
+	{
+		duration: 1,
+		opacity: 0,
+		x: 150,
+		stagger: 0.25,
+	},
+	'+=-1'
+);
+tl.to('.republic', { duration: 1, x: 375, ease: 'back' });
+tl.to('.jedi', { duration: 1, x: -375, ease: 'back' });
 
 document.querySelector('#play').onclick = () => tween.play();
 document.querySelector('#pause').onclick = () => tween.pause();
